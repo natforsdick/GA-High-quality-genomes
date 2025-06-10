@@ -22,5 +22,7 @@ cd $INDIR
 # Trim and filter to remove poor quality ends and short reads
 # l = minimum length, q = minimum average quality
 zcat rata-adaprem.fastq.gz | NanoFilt -l 500 -q 10 --headcrop 20 --tailcrop 20 | gzip > ${OUTDIR}/rata-trimmed.fastq.gz
-# count retained reads
+
+# count retained reads and bases
 zcat ${OUTDIR}rata-trimmed.fastq.gz | echo $((`wc -l`/4))
+zcat ${OUTDIR}rata-trimmed.fastq.gz | awk 'NR%4==2 {sum += length($0)} END {print sum}' 

@@ -4,7 +4,7 @@ This is a [Genomics Aotearoa](https://www.genomics-aotearoa.org.nz/) High-Qualit
 
 Project collaborators: Jessie Prebble*, Thomas Buckley, Natalie Forsdick, Duckchul Park, together with Indigenous partners Ngāti Kuri, and Auckland Botanic Gardens.
 
-/* - primary contact
+* - primary contact
 
 Affiliation: [Manaaki Whenua - Landcare Research](https://landcareresearch.co.nz/)
 

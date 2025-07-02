@@ -4,6 +4,13 @@
 1. R 10.4 ONT run of gDNA from thorax tissue. May have some microbial contamination. This is what was used for the assembly. (**BeeT**)
 2. Illumina data from a L. imitates individual from head tissue. Was not used in the assembly but was used as a check to compare to the thorax tissue assembly.
 
+   ONT OUTPUTS
+| file           | format | type | num_seqs  | sum_len        | min_len | avg_len | max_len | Cov |
+|----------------|--------|------|-----------|----------------|---------|---------|---------|-----|
+| BeeT_all.fastq | FASTQ  | DNA  | 7,421,057 | 23,414,422,118 | 5       | 3,155.1 | 875,881 | 93  |
+| BeeT_Q10.fastq | FASTQ  | DNA  | 6,396,748 | 20,555,038,801 | 5       | 3,213.4 | 297,692 | 82  |
+| BeeT_Q20.fastq | FASTQ  | DNA  | 251,705   | 1,225,520,236  | 7       | 4,868.9 | 90,177  | 4.9 |
+
 ## Assemblies:
 1. I tried several filtering cut-offs on the ONT data and assembled with FLYE. The most contiguous assembly was generated using >Q10 data, a relatively relaxed filter. All of the FLYE assemblies were >600MB. (**FLYE10**)
 2. I also tried a few input subsets on HiFIASM. These assemblies were less contiguous than the FLYE assemblies and ~350MB. The best assembly was generated with >Q18 and >2kb read filters. (**HIFIASM18**)

@@ -5,6 +5,7 @@
 2. Illumina data from a L. imitates individual from head tissue. Was not used in the assembly but was used as a check to compare to the thorax tissue assembly.
 
    ONT OUTPUTS
+   
 | file           | format | type | num_seqs  | sum_len        | min_len | avg_len | max_len | Cov |
 |----------------|--------|------|-----------|----------------|---------|---------|---------|-----|
 | BeeT_all.fastq | FASTQ  | DNA  | 7,421,057 | 23,414,422,118 | 5       | 3,155.1 | 875,881 | 93  |

@@ -1,0 +1,1 @@
+This directory contains all scripts required for assembly and annotation of the rātā Moehau genome, from pre-processing raw short- and long-read data, initial assembly, scaffolding, annotation, QC, and post-processing steps. 

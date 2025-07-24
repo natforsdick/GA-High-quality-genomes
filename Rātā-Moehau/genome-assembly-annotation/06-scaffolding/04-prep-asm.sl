@@ -5,11 +5,16 @@
 # you may wish to align the Omni-C data again for a second round of scaffolding, in which
 # case you will need to modify the params.
 
+##########
+# MODULES
 ml purge  && ml SAMtools/1.15.1-GCC-11.3.0 BWA/0.7.17-GCC-11.3.0
 
+##########
+# PARAMS
 INDIR=/PATH/TO/OUTPUTS/output/polish/NextPolish/
 REF=genome.nextpolish2 # assembly prefix
 OUTDIR=/PATH/TO/OUTPUTS/output/scaffolding/
+##########
 
 mkdir -p $OUTDIR
 cd $OUTDIR

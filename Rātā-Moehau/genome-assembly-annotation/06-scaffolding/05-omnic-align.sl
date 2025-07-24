@@ -7,6 +7,8 @@
 #SBATCH --output %x.%j.out # CHANGE number for new run
 #SBATCH --error %x.%j.err #  CHANGE number for new run
 
+# Aligning the clean Omni-C data to the assembly, and processing the alignment
+
 ##########
 # MODULES
 ml purge

@@ -10,6 +10,8 @@
 # aligning RNA-seq data to soft-masked assembly for transcriptome annotation
 # based on https://github.com/kherronism/rewarewaannotation
 
+##########
+# PARAMS
 INDIR=/PATH/TO/OUTPUTS/output/07-annotation/gene-annotation/
 INDEX=/PATH/TO/OUTPUTS/output/07-annotation/gene-annotation/alignments/STAR-indexes
 OUTDIR=/PATH/TO/OUTPUTS/output/07-annotation/gene-annotation/alignments/STAR-aligned/
@@ -17,6 +19,7 @@ PREFIX=metBart-contam-excl.clean
 REFDIR=/PATH/TO/OUTPUTS/output/07-annotation/repeats/masking/05_full_out/
 REF=metBart-contam-excl.simple_mask.soft.complex_mask.soft.fasta
 
+##########
 # for the guide on readgroup info: https://gatk.broadinstitute.org/hc/en-us/articles/360035890671-Read-groups
 ml purge; ml STAR/2.7.10b-GCC-11.3.0-alpha
 
@@ -33,6 +36,7 @@ STAR \
 
 echo mapped
 
+##########
 echo tidying up
 if [ -f ${OUTDIR}${PREFIX}.Unmapped.out.mate1 ]; then
         mv ${OUTDIR}${PREFIX}.Unmapped.out.mate1 ${outdir}${prefix}.unmapped_1.fastq
@@ -44,15 +48,16 @@ if [ -f ${OUTDIR}${PREFIX}.Unmapped.out.mate2 ]; then
 fi
 echo mapping completed
 
-ml purge
-ml SAMtools/1.19-GCC-12.3.0
+##########
+ml purge; ml SAMtools/1.19-GCC-12.3.0
+
 echo sorting BAM output
 samtools sort -o ${OUTDIR}${PREFIX}.Aligned.sorted.bam -T ${OUTDIR}${PREFIX}.sorting --threads 12 ${OUTDIR}${PREFIX}.Aligned.out.bam
 echo sorted
 
+##########
 # using Picard to collect mapping stats
-ml purge
-ml picard/2.26.10-Java-11.0.4
+ml purge; ml picard/2.26.10-Java-11.0.4
 echo collecting mapping stats
 picard \
         CollectAlignmentSummaryMetrics \

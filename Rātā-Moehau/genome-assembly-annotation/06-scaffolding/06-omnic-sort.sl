@@ -7,6 +7,8 @@
 #SBATCH --output %x.%j.out 
 #SBATCH --error %x.%j.err
 
+# sort the aligned Omni-C data ready for scaffolding
+
 ##########
 # MODULES
 ml purge && ml SAMtools/1.15.1-GCC-11.3.0

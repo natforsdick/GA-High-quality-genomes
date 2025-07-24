@@ -35,7 +35,7 @@ PICARD='/PATH/TO/picard/2.21.8-Java-11.0.4/picard.jar'
 TMP_DIR='/PATH/TO/tmp/' #'/path/to/write/out/temporary/files'
 MAPQ_FILTER=10
 CPU=20
-############
+###############
 
 echo "Checking output directories exist & create them as needed"
 [ -d $RAW_DIR ] || mkdir -p $RAW_DIR
@@ -50,6 +50,7 @@ if [ -f ${REF}.amb ]; then
 	bwa index -a bwtsw -p $PREFIX $REF
 	echo "Finished indexing $REF"
 fi
+###############
 
 echo "Starting QC alignment"
 echo "bwa mem -t $CPU -5SP $REF ${IN_DIR}${HIC}1.fastq.gz ${IN_DIR}${HIC}2.fastq.gz | samblaster |\
@@ -58,6 +59,7 @@ echo "bwa mem -t $CPU -5SP $REF ${IN_DIR}${HIC}1.fastq.gz ${IN_DIR}${HIC}2.fastq
 bwa mem -t $CPU -5SP $REF ${IN_DIR}${HIC}1.fastq.gz ${IN_DIR}${HIC}2.fastq.gz | samblaster |\
  samtools view -@ $CPU -buSh -F 2316 - > ${RAW_DIR}${HIC}.bam
 
+###############
 cd ${RAW_DIR}
 echo "Sorting ${HIC}"
 samtools sort -@ $CPU ${RAW_DIR}${HIC}.bam -o ${RAW_DIR}${HIC}-sorted.bam

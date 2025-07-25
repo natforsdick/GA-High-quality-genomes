@@ -29,4 +29,42 @@ awk -F'\t' -v OFS='\t' '{
     print
 }' merged_annotations.tsv > merged_annotations_cleaned.tsv
 
-# then we need to process the InterProScan outputs
+## then we need to process the InterProScan outputs
+
+# first, we want to remove duplicate PFAM IDs, GO terms, and descriptions within lines
+awk -F'\t' '
+function uniq_semi_separated(str,   n, i, arr, out, seen, item) {
+    n = split(str, arr, /[;]+/)
+    out = ""
+    delete seen
+    for (i = 1; i <= n; i++) {
+        item = arr[i]
+        gsub(/^ +| +$/, "", item)   # trim leading/trailing whitespace
+        if (item != "" && !(item in seen)) {
+            seen[item] = 1
+            out = out ? out ";" item : item
+        }
+    }
+    return out
+}
+{
+    tid = $1
+    pfam_ids[tid] = (pfam_ids[tid] ? pfam_ids[tid] ";" $5 : $5)
+    pfam_names[tid] = (pfam_names[tid] ? pfam_names[tid] ";" $6 : $6)
+    go_terms = $14
+    if (go_terms != "-" && go_terms != "") {
+        gsub(/\([^)]+\)/, "", go_terms)   # remove (InterPro) or similar
+        go[tid] = (go[tid] ? go[tid] ";" go_terms : go_terms)
+    }
+}
+END {
+    for (tid in pfam_ids) {
+        pfams = uniq_semi_separated(pfam_ids[tid])
+        names = uniq_semi_separated(pfam_names[tid])
+        gos = uniq_semi_separated(go[tid])
+        print tid "\t" pfams "\t" names "\t" gos
+    }
+}
+' metBart-contam-excl-prot_clean.fasta.tsv | sort -u > interpro_grouped_dedup.tsv
+
+# We then combine the DIAMOND and InterProScan results in R. 

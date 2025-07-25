@@ -32,4 +32,4 @@ ${BRAKER}braker.pl \
         --busco_lineage=eudicots_odb10 \
         --AUGUSTUS_SCRIPTS_PATH=/PATH/TO/AUGUSTUS/3.5.0-gimkl-2022a/scripts \
         --AUGUSTUS_BIN_PATH=/PATH/TO/AUGUSTUS/3.5.0-gimkl-2022a/bin \
-        --AUGUSTUS_CONFIG_PATH=/PATH/TO/OUTPUTS/output/07-annotation/gene-annotation/braker/orthodb/config
+        --AUGUSTUS_CONFIG_PATH=${OUTDIR}config

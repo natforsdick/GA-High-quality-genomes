@@ -28,3 +28,5 @@ awk -F'\t' -v OFS='\t' '{
     gsub(/\([^)]*\)/, "", $4)  # Remove ( ... )
     print
 }' merged_annotations.tsv > merged_annotations_cleaned.tsv
+
+# then we need to process the InterProScan outputs

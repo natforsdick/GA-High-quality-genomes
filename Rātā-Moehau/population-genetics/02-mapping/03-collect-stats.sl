@@ -1,6 +1,6 @@
 #!/bin/bash -e
+
 #SBATCH -J stats
-#SBATCH -A landcare03691
 #SBATCH --time=00:16:00  
 #SBATCH --cpus-per-task=2
 #SBATCH --array=1-16
@@ -13,7 +13,7 @@
 # PARAMS
 # need to make new fq_list for BAM files
 BAMLIST=sub-bam-samplist.txt
-BAMDIR=/nesi/nobackup/landcare03691/rata-pop-gen/data/output/04-mapped/bam/
+BAMDIR=/PATH/TO/rata-pop-gen/data/output/04-mapped/bam/
 
 ###########
 # MODULES
